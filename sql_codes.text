@@ -1,0 +1,64 @@
+-- Create the database
+CREATE DATABASE workshop;
+
+-- Use the created database
+USE workshop;
+
+-- Clients Table
+CREATE TABLE clients (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    car_license VARCHAR(50) NOT NULL UNIQUE,
+    car_engine VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- Mechanics Table
+CREATE TABLE mechanics (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    max_clients INT DEFAULT 4,
+    current_clients INT DEFAULT 0
+);
+
+-- Appointments Table
+CREATE TABLE appointments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_id INT NOT NULL,
+    mechanic_id INT NOT NULL,
+    date DATE NOT NULL,
+    FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE,
+    FOREIGN KEY (mechanic_id) REFERENCES mechanics(id) ON DELETE CASCADE
+);
+
+-- Users Table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'user') NOT NULL
+);
+
+-- Insert Sample Data into Users Table
+INSERT INTO users (username, password, role) VALUES
+('admin', SHA2('admin123', 256), 'admin'), -- Admin Login
+('user1', SHA2('user123', 256), 'user');  -- User Login
+
+-- Insert Sample Data into Mechanics Table
+INSERT INTO mechanics (name, max_clients, current_clients) VALUES
+('John Smith', 4, 0),
+('Alice Johnson', 4, 2),
+('Robert Brown', 4, 1),
+('Emily Davis', 4, 0),
+('Michael Wilson', 4, 3);
+
+-- Insert Sample Data into Clients Table
+INSERT INTO clients (name, address, phone, car_license, car_engine) VALUES
+('Jane Doe', '123 Elm Street', '1234567890', 'ABC123', 'ENG456'),
+('Mark Spencer', '456 Maple Avenue', '0987654321', 'XYZ789', 'ENG123');
+
+-- Insert Sample Data into Appointments Table
+INSERT INTO appointments (client_id, mechanic_id, date) VALUES
+(1, 2, '2024-12-15'), -- Jane Doe with Alice Johnson
+(2, 5, '2024-12-16'); -- Mark Spencer with Michael Wilson
