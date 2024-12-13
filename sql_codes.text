@@ -42,23 +42,24 @@ CREATE TABLE users (
 
 -- Insert Sample Data into Users Table
 INSERT INTO users (username, password, role) VALUES
-('admin', SHA2('admin123', 256), 'admin'), -- Admin Login
-('user1', SHA2('user123', 256), 'user');  -- User Login
-
+('admin', SHA2('admin55', 5577), 'admin'),
+('user1', SHA2('user_one', 'one_user'), 'user');  -- User Login
+-- Admin Login
 -- Insert Sample Data into Mechanics Table
+
 INSERT INTO mechanics (name, max_clients, current_clients) VALUES
-('John Smith', 4, 0),
-('Alice Johnson', 4, 2),
-('Robert Brown', 4, 1),
-('Emily Davis', 4, 0),
-('Michael Wilson', 4, 3);
+('Samsu', 4, 0),
+('Jony', 4, 0),
+('Laden', 4, 0),
+('Akash', 4, 0),
+('Batash', 4, 0);
 
 -- Insert Sample Data into Clients Table
 INSERT INTO clients (name, address, phone, car_license, car_engine) VALUES
-('Jane Doe', '123 Elm Street', '1234567890', 'ABC123', 'ENG456'),
-('Mark Spencer', '456 Maple Avenue', '0987654321', 'XYZ789', 'ENG123');
+('Bashar', '123 Elm Street', '1234567890', 'ABC123', 'ENG456'),
+('Walker', '456 Maple Avenue', '0987654321', 'XYZ789', 'ENG123');
 
 -- Insert Sample Data into Appointments Table
 INSERT INTO appointments (client_id, mechanic_id, date) VALUES
-(1, 2, '2024-12-15'), -- Jane Doe with Alice Johnson
-(2, 5, '2024-12-16'); -- Mark Spencer with Michael Wilson
+(1, 2, '2024-12-15'), 
+(2, 5, '2024-12-16'); 
