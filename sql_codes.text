@@ -40,12 +40,15 @@ CREATE TABLE users (
     role ENUM('admin', 'user') NOT NULL
 );
 
--- Insert Sample Data into Users Table
+THIS PART IS A DUMMY####
 INSERT INTO users (username, password, role) VALUES
-('admin', SHA2('admin55', 5577), 'admin'),
-('user1', SHA2('user_one', 'one_user'), 'user');  -- User Login
--- Admin Login
--- Insert Sample Data into Mechanics Table
+('admin', SHA2('admin123', 256), 'admin'), -- Admin Login - 256 is the crypto used to hash the password. 'admin' is the username and 'admin123' is the password.
+('user1', SHA2('user123', 256), 'user');  -- User Login
+
+
+INSERT INTO users (username, password, role) VALUES
+('admin55', SHA2('admin101', 256), 'admin'), 
+('user_one', SHA2('user123', 256), 'user');  
 
 INSERT INTO mechanics (name, max_clients, current_clients) VALUES
 ('Samsu', 4, 0),

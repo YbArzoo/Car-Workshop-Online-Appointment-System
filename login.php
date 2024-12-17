@@ -30,7 +30,7 @@ if ($result->num_rows === 1) {
         if ($user['role'] === 'admin') {
             header("Location: admin_panel.php");
         } else {
-            header("Location: user_panel.html");
+            header("Location: user_panel.php");
         }
         exit;
     }

@@ -1,46 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const appointmentsList = document.getElementById("appointments-list");
+    const mechanicsList = document.getElementById("mechanics-list");
 
-    fetch("get_appointments.php")
+    // Fetch and display mechanic availability
+    fetch("get_mechanics.php")
         .then(response => response.json())
-        .then(appointments => {
-            appointments.forEach(appointment => {
+        .then(mechanics => {
+            console.log(mechanics); // Debug: Check the returned data in the console
+            
+            mechanics.forEach(mechanic => {
+                const availableSlots = mechanic.max_clients - mechanic.current_clients;
+
                 const row = document.createElement("tr");
 
+                // Check the mechanic object fields
+                console.log("Mechanic:", mechanic); // Debug individual mechanic objects
+
                 row.innerHTML = `
-                    <td>${appointment.client_name}</td>
-                    <td>${appointment.phone}</td>
-                    <td>${appointment.car_license}</td>
-                    <td>${appointment.date}</td>
-                    <td>${appointment.mechanic_name}</td>
-                    <td>
-                        <button onclick="editAppointment(${appointment.appointment_id})">Edit</button>
-                    </td>
+                    <td>${mechanic.id}</td>                <!-- Mechanic ID -->
+                    <td>${mechanic.name}</td>              <!-- Mechanic Name -->
+                    <td>${mechanic.max_clients}</td>       <!-- Max Clients -->
+                    <td>${mechanic.current_clients}</td>   <!-- Current Clients -->
+                    <td>${availableSlots}</td>             <!-- Available Slots -->
                 `;
 
-                appointmentsList.appendChild(row);
+                mechanicsList.appendChild(row);
             });
-        });
-});
-
-function editAppointment(appointmentId) {
-    const newDate = prompt("Enter new date (YYYY-MM-DD):");
-    const newMechanicId = prompt("Enter new mechanic ID:");
-
-    if (newDate && newMechanicId) {
-        fetch("edit_appointment.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                appointment_id: appointmentId,
-                new_date: newDate,
-                new_mechanic_id: newMechanicId,
-            }),
         })
-            .then(response => response.text())
-            .then(message => alert(message))
-            .catch(error => console.error("Error:", error));
-    }
-}
+        .catch(error => console.error("Error fetching mechanics:", error));
+});

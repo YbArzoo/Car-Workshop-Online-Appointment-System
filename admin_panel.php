@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Admin Panel</h1>
@@ -31,6 +31,23 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             </tr>
         </thead>
         <tbody id="appointments-list">
+            <!-- Rows will be populated dynamically -->
+        </tbody>
+    </table>
+
+    <!-- Table for displaying mechanic availability -->
+    <h2>Mechanic Availability</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Mechanic ID</th>
+                <th>Mechanic Name</th>
+                <th>Max Clients</th>
+                <th>Current Clients</th>
+                <th>Available Slots</th>
+            </tr>
+        </thead>
+        <tbody id="mechanics-list">
             <!-- Rows will be populated dynamically -->
         </tbody>
     </table>
