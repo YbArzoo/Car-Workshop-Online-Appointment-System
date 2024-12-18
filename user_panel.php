@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Panel</title>
     <link rel="stylesheet" href="style.css">
+    
 
 </head>
 <body>
@@ -45,7 +46,9 @@ if (!isset($_SESSION['user_id'])) {
         
         <button type="submit">Book Appointment</button>
     </form>
-
+    <div class="logout-center">
+        <button onclick="location.href='logout.php';" class="logout-button">Logout</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

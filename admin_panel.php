@@ -13,6 +13,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <h1>Admin Panel</h1>
@@ -51,6 +52,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             <!-- Rows will be populated dynamically -->
         </tbody>
     </table>
+
+    <div class="logout-center">
+        <button onclick="location.href='logout.php';" class="logout-button">Logout</button>
+    </div>
 
     <script src="admin_script.js"></script>
 </body>

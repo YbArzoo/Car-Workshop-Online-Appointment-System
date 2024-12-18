@@ -3,17 +3,47 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('images/login_bg.png') no-repeat center center/cover; /* Background Image */
-    height: 100vh; /* Full screen height */
+    background: none;
+    justify-content: center;
+    
+}
+
+
+.logout-center {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    color: #333; /* Text color */
-    line-height: 1.6;
+    margin: 20px 0;
 }
 
+.logout-button {
+    background-color: #dc3545; /* Red background */
+    color: white; /* White text */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
 /* Login Page Styling */
+.login-page {
+    background: url('images/login_bg.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+body {
+    background: none; 
+}
+
 .login-container {
     width: 100%;
     max-width: 400px;
